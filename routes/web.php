@@ -27,51 +27,51 @@ Route::get('doc/{title}', function() { abort(404); });
 Route::group(['prefix'=>'main'], function() {
 
     // otp
-    Route::get('otp/{user_id}/{token}', function() { abort(404); });
+    Route::get('otp/{user_id}/{token}', 'MainController@otp');
 
     // these take a code; before the main part
-    Route::get('register/{code}', function() { abort(404); });
-    Route::get('confirmaddress/{code}', function() { abort(404); });
-    Route::get('recoverpassword/{code}', function() { abort(404); });
+    Route::get('register/{code}', 'MainController@registerConfirmation');
+    Route::get('confirmaddress/{code}', 'MainController@emailAddressConfirmation');
+    Route::get('recoverpassword/{code}', 'MainController@recoverPasswordConfirmation');
 
     // Also need a block variant accepting ID on URL for mail links
-    Route::get('block/{profile_id}', function() { abort(404); });
+    Route::get('block/{profile_id}', 'MainController@blockProfileConfirmation');
 
-    Route::get('sup/{seconds}', function() { abort(404); });
-    Route::get('login', function() { abort(404); });
-    Route::get('logout', function() { abort(404); });
-    Route::get('register', function() { abort(404); });
-    Route::get('subscribe', function() { abort(404); });
-    Route::get('unsubscribe', function() { abort(404); });
-    Route::get('cancelsubscription', function() { abort(404); });
-    Route::get('approvesub', function() { abort(404); });
-    Route::get('confirmaddress', function() { abort(404); });
-    Route::get('recoverpassword', function() { abort(404); });
-    Route::get('invite', function() { abort(404); });
-    Route::get('sup', function() { abort(404); });
-    Route::get('block', function() { abort(404); });
-    Route::get('unblock', function() { abort(404); });
-    Route::get('subedit', function() { abort(404); });
-    Route::get('groupblock', function() { abort(404); });
-    Route::get('groupunblock', function() { abort(404); });
-    Route::get('sandbox', function() { abort(404); });
-    Route::get('unsandbox', function() { abort(404); });
-    Route::get('silence', function() { abort(404); });
-    Route::get('unsilence', function() { abort(404); });
-    Route::get('grantrole', function() { abort(404); });
-    Route::get('revokerole', function() { abort(404); });
-    Route::get('deleteuser', function() { abort(404); });
-    Route::get('geocode', function() { abort(404); });
-    Route::get('version', function() { abort(404); });
-    Route::get('backupaccount', function() { abort(404); });
-    Route::get('deleteaccount', function() { abort(404); });
-    Route::get('restoreaccount', function() { abort(404); });
-    Route::get('top', function() { abort(404); });
-    Route::get('public', function() { abort(404); });
-    Route::get('all', function() { abort(404); });
-    Route::get('tagprofile/{id}', function() { abort(404); });
-    Route::get('tagprofile', function() { abort(404); });
-    Route::get('xrds', function() { abort(404); });
+    Route::get('sup/{seconds}', 'MainController@supSeconds');
+    Route::get('login', 'MainController@login');
+    Route::get('logout','MainController@logout');
+    Route::get('register','MainController@register');
+    Route::get('subscribe','MainController@subscribe');
+    Route::get('unsubscribe','MainController@unsubscribe');
+    Route::get('cancelsubscription','MainController@cancelsubscription');
+    Route::get('approvesub','MainController@approvesub');
+    Route::get('confirmaddress','MainController@confirmaddress');
+    Route::get('recoverpassword','MainController@recoverpassword');
+    Route::get('invite','MainController@invite');
+    Route::get('sup','MainController@sup');
+    Route::get('block','MainController@block');
+    Route::get('unblock','MainController@unblock');
+    Route::get('subedit','MainController@subedit');
+    Route::get('groupblock','MainController@groupblock');
+    Route::get('groupunblock','MainController@groupunblock');
+    Route::get('sandbox','MainController@sandbox');
+    Route::get('unsandbox','MainController@unsandbox');
+    Route::get('silence','MainController@silence');
+    Route::get('unsilence','MainController@unsilence');
+    Route::get('grantrole','MainController@grantrole');
+    Route::get('revokerole','MainController@revokerole');
+    Route::get('deleteuser','MainController@deleteuser');
+    Route::get('geocode','MainController@geocode');
+    Route::get('version','MainController@version');
+    Route::get('backupaccount','MainController@backupaccount');
+    Route::get('deleteaccount','MainController@deleteaccount');
+    Route::get('restoreaccount','MainController@restoreaccount');
+    Route::get('top','MainController@top');
+    Route::get('public','MainController@publicFeed');
+    Route::get('all','MainController@all');
+    Route::get('tagprofile/{id}','MainController@tagProfileId');
+    Route::get('tagprofile','MainController@tagprofile');
+    Route::get('xrds','MainController@xrds');
 });
 
 Route::group(['prefix'=>'settings'], function() {
