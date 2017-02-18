@@ -28,3 +28,18 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Notice::class, function (Faker\Generator $faker) {
+	$user = App\User::whereRole('member')->orderByRaw('rand()')->firstOrFail();
+	$tweet = $faker->realText(rand(130,150), rand(1,5));
+	return [
+		'user_id' => $user->id,
+		'username' => $user->username,
+		'content' => $tweet,
+		'rendered' => $tweet,
+		'object_type' => 'http://activitystrea.ms/schema/1.0/post',
+		'verb' => 'http://activitystrea.ms/schema/1.0/post',
+		'scope' => '0',
+		'entities' => '',
+	];
+});
