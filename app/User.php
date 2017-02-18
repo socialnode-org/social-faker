@@ -26,4 +26,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function statuses()
+    {
+        return $this->hasMany('App\Notice');
+    }
+
+    public function profileImageUrl()
+    {
+        $site = config('app.url');
+        $path = '/avatar';
+
+        return "{$site}{$path}/{$this->id}.jpeg";
+    }
+
+    public function url()
+    {
+        return config('app.url') . '/' . $this->username;
+    }
 }
