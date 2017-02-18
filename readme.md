@@ -1,4 +1,4 @@
 social-faker
 ==================
 
-a mock gnu/social api for testing federation APIs
+a mock gnu/social server for testing federation APIs.
