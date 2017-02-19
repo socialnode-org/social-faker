@@ -284,3 +284,5 @@ Route::get('panel/licence', function() { abort(404); });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/asset/{path}', 'AvatarController@show')->where('path', '.*');
