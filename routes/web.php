@@ -182,8 +182,8 @@ Route::group(['prefix'=>'api'], function() {
     Route::get('check_nickname.{fmt}', function() { abort(404); });
     
     // users
-    Route::get('users/show/{id}.{fmt}', function() { abort(404); });
-    Route::get('users/show.{fmt}', function() { abort(404); });
+    Route::get('users/show/{id}.{fmt}', 'ApiUserController@showId');
+    Route::get('users/show.{fmt}', 'ApiUserController@show');
     Route::get('users/profile_image/{screen_name}.{fmt}', function() { abort(404); });
     
     // friendships
