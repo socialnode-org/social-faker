@@ -167,9 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        Spatie\Fractal\FractalServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
-        Spatie\Glide\GlideServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,9 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Fractal' => Spatie\Fractal\FractalFacade::class,
         'Feed' => Roumen\Feed\Feed::class,
-        'GlideImage' => Spatie\Glide\GlideImageFacade::class,
 
     ],
 
