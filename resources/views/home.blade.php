@@ -67,7 +67,7 @@
                     </a>
                     <a class="level-item">
                       <span class="icon is-small"><i class="fa fa-heart"></i></span>
-                      &nbsp; 0
+                      &nbsp; {{ $status->favorites()->count() }}
                     </a>
                   </div>
                 </nav>

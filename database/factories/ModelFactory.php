@@ -43,3 +43,13 @@ $factory->define(App\Notice::class, function (Faker\Generator $faker) {
 		'entities' => '',
 	];
 });
+
+$factory->define(App\Favorite::class, function (Faker\Generator $faker) {
+	$user = App\User::orderByRaw('rand()')->firstOrFail();
+	$status = App\Notice::where('user_id', '!=', $user->id)->orderByRaw('rand()')->firstOrFail();
+
+	return [
+		'notice_id' => $status->id,
+		'user_id' => $user->id,
+	];
+});

@@ -39,4 +39,9 @@ class Notice extends Model
     	return "{$domain}/notice/{$this->id}";
     }
 
+    public function favorites()
+    {
+    	return $this->hasMany('App\Favorite');
+    }
+
 }
