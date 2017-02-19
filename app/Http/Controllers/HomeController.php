@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\{Notice, User};
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $timeline = Notice::orderBy('id', 'desc')->paginate(10);
+        return view('home', compact('timeline'));
     }
 }
