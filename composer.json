@@ -10,7 +10,8 @@
         "laravel/tinker": "~1.0",
         "roumen/feed": "~2.10",
         "spatie/laravel-fractal": "^3.4",
-        "spatie/laravel-glide": "^3.1"
+        "spatie/laravel-glide": "^3.1",
+        "yzalis/identicon": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
