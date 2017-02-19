@@ -122,3 +122,8 @@ ul.card-stats-list {
   display: none;
 }
 
+.stream-item .fa {
+  font-size: 12px;
+  vertical-align: bottom;
+}
+
