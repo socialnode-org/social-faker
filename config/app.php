@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Spatie\Fractal\FractalServiceProvider::class,
+        Roumen\Feed\FeedServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Fractal' => Spatie\Fractal\FractalFacade::class,
+        'Feed' => Roumen\Feed\Feed::class,
 
     ],
 
