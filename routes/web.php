@@ -144,10 +144,10 @@ Route::group(['prefix'=>'group'], function() {
 Route::group(['prefix'=>'api'], function() {
     Route::get('/', function() { abort(404); });
     
-    Route::get('statuses/public_timeline.{fmt}', 'ApiController@publicTimeline');
+    Route::get('statuses/public_timeline.{fmt}', 'ApiStatusController@publicTimeline');
 
     // this is not part of the Twitter API. Also may require authentication depending on server config!
-    Route::get('statuses/networkpublic_timeline.{fmt}', 'ApiController@networkTimeline');
+    Route::get('statuses/networkpublic_timeline.{fmt}', 'ApiStatusController@networkTimeline');
 
     Route::get('statuses/friends_timeline/{id}.{fmt}', function() { abort(404); });
     Route::get('statuses/friends_timeline.{fmt}', function() { abort(404); });
