@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use League\Glide\Urls\UrlBuilderFactory;
 
 class User extends Authenticatable
 {
@@ -40,9 +41,10 @@ class User extends Authenticatable
     public function profileImageUrl()
     {
         $site = config('app.url');
-        $path = '/avatar';
-
-        return "{$site}{$path}/{$this->id}.jpeg";
+        $signkey = config('app.key');
+        $urlBuilder = UrlBuilderFactory::create('/asset/', $signkey);
+        $url = $urlBuilder->getUrl($this->avatars[0]->filename, ['w' => 125]);
+        return $url;
     }
 
     public function url()
