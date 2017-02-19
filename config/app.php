@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Spatie\Fractal\FractalServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
+        Spatie\Glide\GlideServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +231,7 @@ return [
 
         'Fractal' => Spatie\Fractal\FractalFacade::class,
         'Feed' => Roumen\Feed\Feed::class,
+        'GlideImage' => Spatie\Glide\GlideImageFacade::class,
 
     ],
 

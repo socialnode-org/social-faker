@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Notice');
     }
 
+    public function avatars()
+    {
+        return $this->hasMany('App\Avatar', 'profile_id', 'id');
+    }
+
     public function profileImageUrl()
     {
         $site = config('app.url');
