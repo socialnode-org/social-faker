@@ -15,7 +15,7 @@
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     $name = $faker->name;
     $email = $faker->unique()->safeEmail;
-    $username = $faker->unique()->userName;
+    $username = substr($faker->unique()->userName, 0, 10).str_random(4);
 
     return [
         'name' => $name,

@@ -281,3 +281,6 @@ Route::get('panel/paths', function() { abort(404); });
 Route::get('panel/sessions', function() { abort(404); });
 Route::get('panel/sitenotice', function() { abort(404); });
 Route::get('panel/licence', function() { abort(404); });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
