@@ -3,7 +3,7 @@
   </header>
   <div class="card-content">
     <a class="card-avatar">
-      <img src="https://placehold.it/120x120" class="card-avatar-img">
+      <img src="{{ Auth::user()->profileImageUrl() }}" class="card-avatar-img">
     </a>
 
     <div class="card-user">
