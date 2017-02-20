@@ -126,7 +126,7 @@ return [
 
     'app_domain' => env('APP_SUBDOMAIN', 'social-faker.dev'),
     'api_subdomain' => env('API_SUBDOMAIN', 'api.social-faker.dev'),
-    'developers_subdomain' => env('DEVELOPERS_SUBDOMAIN', 'developers.social-faker.dev'),
+    'dev_subdomain' => env('DEV_SUBDOMAIN', 'developers.social-faker.dev'),
     'docs_subdomain' => env('DOCS_SUBDOMAIN', 'docs.social-faker.dev'),
 
     /*

@@ -14,6 +14,8 @@ class MainController extends Controller
 	 **/
     public function baseRedirect() { return redirect('/main/all'); }
     
+    public function notYetImplemented() { return response()->json(self::nyi); }
+
     public function otp() { return response()->json(self::nyi); }
     public function registerConfirmation() { return response()->json(self::nyi); }
     public function emailAddressConfirmation() { return response()->json(self::nyi); }
