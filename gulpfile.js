@@ -14,7 +14,16 @@ require('laravel-elixir-vue-2');
  */
 
 elixir(mix => {
-    mix.styles('social.css')
-    .webpack('twitter-text.js')
-    .webpack('app.js');
+    mix.styles([
+      'bulma.css',
+      'social.css',
+      'transition.css',
+      'dropdown.css',
+    ], 'public/css/app.css')
+    .scripts([
+      'twitter-text.js',
+      'transition.js',
+      'dropdown.js',
+      ], 'public/js/app.js')
+    .version(['css/app.css', 'js/app.js']);
 });
