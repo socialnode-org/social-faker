@@ -88,6 +88,23 @@ ul.card-stats-list {
   height:20px;
 }
 
+.text-small {
+  font-size: 12px;
+}
+
+.text-gray {
+  color: #8899a6;
+}
+
+.sidebar-footer {
+  line-height: 1.7;
+}
+
+.sidebar-footer a {
+  color: #8899a6;
+  padding: 0 5px;
+}
+
 .trending .trend-title {
   padding-bottom: 10px;
 }
@@ -127,3 +144,15 @@ ul.card-stats-list {
   vertical-align: bottom;
 }
 
+.stream-item .entity.box {
+  margin: 20px 0;
+}
+
+.media .entity.box .media, .media+.entity.box +.media {
+    border-top: none;
+    padding-top: 0;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
