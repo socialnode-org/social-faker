@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['domain' => 'social-faker.dev', 'middleware' => 'web'], function () {
+Route::group(['domain' => config('app_domain'), 'middleware' => 'web'], function () {
 
 Route::auth();
 
@@ -145,135 +145,11 @@ Route::group(['prefix'=>'group'], function() {
 });
 
 Route::group(['prefix'=>'api'], function() {
-    Route::get('/', function() { abort(404); });
-    
-    Route::get('statuses/public_timeline.{fmt}', 'ApiStatusController@publicTimeline');
-
-    // this is not part of the Twitter API. Also may require authentication depending on server config!
-    Route::get('statuses/networkpublic_timeline.{fmt}', 'ApiStatusController@networkTimeline');
-
-    Route::get('statuses/friends_timeline/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/friends_timeline.{fmt}', function() { abort(404); });
-    Route::get('statuses/home_timeline/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/home_timeline.{fmt}', function() { abort(404); });
-    Route::get('statuses/user_timeline/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/user_timeline.{fmt}', function() { abort(404); });
-    Route::get('statuses/mentions/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/mentions.{fmt}', function() { abort(404); });
-    Route::get('statuses/replies/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/replies.{fmt}', function() { abort(404); });
-    Route::get('statuses/mentions_timeline/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/mentions_timeline.{fmt}', function() { abort(404); });
-    Route::get('statuses/friends/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/friends.{fmt}', function() { abort(404); });
-    Route::get('statuses/followers/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/followers.{fmt}', function() { abort(404); });
-    Route::get('statuses/show/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/show.{fmt}', function() { abort(404); });
-    Route::get('statuses/update.{fmt}', function() { abort(404); });
-    Route::get('statuses/destroy/{id}.{fmt}', function() { abort(404); });
-    Route::get('statuses/destroy.{fmt}', function() { abort(404); });
-
-    // START qvitter API additions
-    Route::get('attachment/{id}.{fmt}', function() { abort(404); });
-    Route::get('attachment/checkhub.{fmt}', function() { abort(404); });
-    Route::get('externalprofile/show.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/admins/{id}.{fmt}', function() { abort(404); });
-    Route::get('account/update_link_color.{fmt}', function() { abort(404); });
-    Route::get('account/update_background_color.{fmt}', function() { abort(404); });
-    Route::get('account/register.{fmt}', function() { abort(404); });
-    Route::get('check_nickname.{fmt}', function() { abort(404); });
-    
-    // users
-    Route::get('users/show/{id}.{fmt}', 'ApiUserController@showId');
-    Route::get('users/show.{fmt}', 'ApiUserController@show');
-    Route::get('users/profile_image/{screen_name}.{fmt}', function() { abort(404); });
-    
-    // friendships
-    Route::get('friendships/show.{fmt}', function() { abort(404); });
-    Route::get('friendships/exists.{fmt}', function() { abort(404); });
-    Route::get('friendships/create/{id}.{fmt}', function() { abort(404); });
-    Route::get('friendships/create.{fmt}', function() { abort(404); });
-    Route::get('friendships/destroy/{id}.{fmt}', function() { abort(404); });
-    Route::get('friendships/destroy.{fmt}', function() { abort(404); });
-
-    // Social graph
-    Route::get('friends/ids/{id}.{fmt}', function() { abort(404); });
-    Route::get('followers/ids/{id}.{fmt}', function() { abort(404); });
-    Route::get('friends/{ids}.{fmt}', function() { abort(404); });
-    Route::get('followers/{ids}.{fmt}', function() { abort(404); });
-
-    // account
-    Route::get('account/verify_credentials.{fmt}', function() { abort(404); });
-    Route::get('account/update_profile.{fmt}', function() { abort(404); });
-    Route::get('account/update_profile_image.{fmt}', function() { abort(404); });
-    Route::get('account/update_delivery_device.{fmt}', function() { abort(404); });
-
-    // special case where verify_credentials is called w/out a format
-    Route::get('account/verify_credentials', function() { abort(404); });
-
-    Route::get('account/rate_limit_status.{fmt}', function() { abort(404); });
-    Route::get('blocks/create/{id}.{fmt}', function() { abort(404); });
-    Route::get('blocks/create.{fmt}', function() { abort(404); });
-    Route::get('blocks/destroy/{id}.{fmt}', function() { abort(404); });
-    Route::get('blocks/destroy.{fmt}', function() { abort(404); });
-    Route::get('help/test.{fmt}', function() { abort(404); });
-    Route::get('statusnet/version.{fmt}', function() { abort(404); });
-    Route::get('statusnet/config.{fmt}', function() { abort(404); });
-    Route::get('gnusocial/version.{fmt}', function() { abort(404); });
-    Route::get('gnusocial/config.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/timeline/{id}.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/show/{id}.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/show.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/join/{id}.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/join.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/leave/{id}.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/leave.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/is_member.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/list/{id}.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/list.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/list_all.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/membership/{id}.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/create.{fmt}', function() { abort(404); });
-    Route::get('statusnet/groups/update/{id}.{fmt}', function() { abort(404); });
-
-    // conversation (aka threaded status)
-    Route::get('statusnet/conversation/{id}.{fmt}', function() { abort(404); });
-
-    // Lists (people tags)
-    Route::get('lists/list.{fmt}', function() { abort(404); });
-    Route::get('lists/memberships.{fmt}', function() { abort(404); });
-    Route::get('{user}/lists/memberships.{fmt}', function() { abort(404); });
-    Route::get('lists/subscriptions.{fmt}', function() { abort(404); });
-    Route::get('{user}/lists/subscriptions.{fmt}', function() { abort(404); });
-    Route::get('lists.{fmt}', function() { abort(404); });
-    Route::get('{user}/lists/{id}.{fmt}', function() { abort(404); });
-    Route::get('{user}/lists.{fmt}', function() { abort(404); });
-    Route::get('{user}/lists/{id}/statuses.{fmt}', function() { abort(404); });
-    Route::get('{user}/{list_id}/members/{id}.{fmt}', function() { abort(404); });
-    Route::get('{user}/{list_id}/members.{fmt}', function() { abort(404); });
-    Route::get('{user}/{list_id}/subscribers/{id}.{fmt}', function() { abort(404); });
-    Route::get('{user}/{list_id}/subscribers.{fmt}', function() { abort(404); });
-
-    // Tags
-    Route::get('statusnet/tags/timeline/{tag}.{fmt}', function() { abort(404); });
-
-    // media related
-    Route::get('statusnet/media/upload', function() { abort(404); });
-    Route::get('statuses/update_with_media.json', function() { abort(404); });
-
-    // Twitter Media upload API v1.1
-    Route::get('media/upload.{fmt}', function() { abort(404); });
-
-    // search
-    Route::get('search.atom', function() { abort(404); });
-    Route::get('search.json', function() { abort(404); });
-    Route::get('trends.json', function() { abort(404); });
-
-    // oauth stuff
-    Route::get('oauth/request_token', function() { abort(404); });
-    Route::get('oauth/access_token', function() { abort(404); });
-    Route::get('oauth/authorize', function() { abort(404); });
+  Route::get('{base}', 'ApiController@redirectToSubdomain');
+  Route::get('{base}/{sub}', 'ApiController@redirectToSubdomain');
+  Route::get('{base}/{sub}/{child}', 'ApiController@redirectToSubdomain');
+  Route::get('{base}/{sub}/{child}/{grandchild}', 'ApiController@redirectToSubdomain');
+  Route::get('{base}/{sub}/{child}/{grandchild}/{weirdo}', 'ApiController@redirectToSubdomain');
 });
 
 // admin
@@ -291,9 +167,274 @@ Route::get('/home', 'HomeController@index');
 Route::get('/asset/{path}', 'AvatarController@show')->where('path', '.*');
 
 });
-Route::group(['domain' => 'developers.social-faker.dev', 'middleware' => 'web'], function () {
+Route::group(['domain' => config('app.developers_subdomain'), 'middleware' => 'web'], function () {
   Route::get('/', 'DeveloperController@home');
 
   Route::get('style-guide', 'DeveloperController@styleGuideHome');
   Route::get('style-guide/status', 'DeveloperController@styleGuideStatus');
+});
+
+Route::group(['domain' => config('app.api_subdomain'), 'middleware' => 'web'], function () {
+  Route::group(['prefix'=>'v0'], function() {
+      Route::get('/', function() { abort(404); });
+      
+      Route::get('statuses/public_timeline.{fmt}', 'ApiStatusController@publicTimeline');
+
+      // this is not part of the Twitter API. Also may require authentication depending on server config!
+      Route::get('statuses/networkpublic_timeline.{fmt}', 'ApiStatusController@networkTimeline');
+
+      Route::get('statuses/friends_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/friends_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/home_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/home_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/user_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/user_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions.{fmt}', function() { abort(404); });
+      Route::get('statuses/replies/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/replies.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/friends/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/friends.{fmt}', function() { abort(404); });
+      Route::get('statuses/followers/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/followers.{fmt}', function() { abort(404); });
+      Route::get('statuses/show/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/show.{fmt}', function() { abort(404); });
+      Route::get('statuses/update.{fmt}', function() { abort(404); });
+      Route::get('statuses/destroy/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/destroy.{fmt}', function() { abort(404); });
+
+      // START qvitter API additions
+      Route::get('attachment/{id}.{fmt}', function() { abort(404); });
+      Route::get('attachment/checkhub.{fmt}', function() { abort(404); });
+      Route::get('externalprofile/show.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/admins/{id}.{fmt}', function() { abort(404); });
+      Route::get('account/update_link_color.{fmt}', function() { abort(404); });
+      Route::get('account/update_background_color.{fmt}', function() { abort(404); });
+      Route::get('account/register.{fmt}', function() { abort(404); });
+      Route::get('check_nickname.{fmt}', function() { abort(404); });
+      
+      // users
+      Route::get('users/show/{id}.{fmt}', 'ApiUserController@showId');
+      Route::get('users/show.{fmt}', 'ApiUserController@show');
+      Route::get('users/profile_image/{screen_name}.{fmt}', function() { abort(404); });
+      
+      // friendships
+      Route::get('friendships/show.{fmt}', function() { abort(404); });
+      Route::get('friendships/exists.{fmt}', function() { abort(404); });
+      Route::get('friendships/create/{id}.{fmt}', function() { abort(404); });
+      Route::get('friendships/create.{fmt}', function() { abort(404); });
+      Route::get('friendships/destroy/{id}.{fmt}', function() { abort(404); });
+      Route::get('friendships/destroy.{fmt}', function() { abort(404); });
+
+      // Social graph
+      Route::get('friends/ids/{id}.{fmt}', function() { abort(404); });
+      Route::get('followers/ids/{id}.{fmt}', function() { abort(404); });
+      Route::get('friends/{ids}.{fmt}', function() { abort(404); });
+      Route::get('followers/{ids}.{fmt}', function() { abort(404); });
+
+      // account
+      Route::get('account/verify_credentials.{fmt}', function() { abort(404); });
+      Route::get('account/update_profile.{fmt}', function() { abort(404); });
+      Route::get('account/update_profile_image.{fmt}', function() { abort(404); });
+      Route::get('account/update_delivery_device.{fmt}', function() { abort(404); });
+
+      // special case where verify_credentials is called w/out a format
+      Route::get('account/verify_credentials', function() { abort(404); });
+
+      Route::get('account/rate_limit_status.{fmt}', function() { abort(404); });
+      Route::get('blocks/create/{id}.{fmt}', function() { abort(404); });
+      Route::get('blocks/create.{fmt}', function() { abort(404); });
+      Route::get('blocks/destroy/{id}.{fmt}', function() { abort(404); });
+      Route::get('blocks/destroy.{fmt}', function() { abort(404); });
+      Route::get('help/test.{fmt}', function() { abort(404); });
+      Route::get('statusnet/version.{fmt}', function() { abort(404); });
+      Route::get('statusnet/config.{fmt}', function() { abort(404); });
+      Route::get('gnusocial/version.{fmt}', function() { abort(404); });
+      Route::get('gnusocial/config.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/show/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/show.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/join/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/join.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/leave/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/leave.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/is_member.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/list/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/list.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/list_all.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/membership/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/create.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/update/{id}.{fmt}', function() { abort(404); });
+
+      // conversation (aka threaded status)
+      Route::get('statusnet/conversation/{id}.{fmt}', function() { abort(404); });
+
+      // Lists (people tags)
+      Route::get('lists/list.{fmt}', function() { abort(404); });
+      Route::get('lists/memberships.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/memberships.{fmt}', function() { abort(404); });
+      Route::get('lists/subscriptions.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/subscriptions.{fmt}', function() { abort(404); });
+      Route::get('lists.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/{id}.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/{id}/statuses.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/members/{id}.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/members.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/subscribers/{id}.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/subscribers.{fmt}', function() { abort(404); });
+
+      // Tags
+      Route::get('statusnet/tags/timeline/{tag}.{fmt}', function() { abort(404); });
+
+      // media related
+      Route::get('statusnet/media/upload', function() { abort(404); });
+      Route::get('statuses/update_with_media.json', function() { abort(404); });
+
+      // Twitter Media upload API v1.1
+      Route::get('media/upload.{fmt}', function() { abort(404); });
+
+      // search
+      Route::get('search.atom', function() { abort(404); });
+      Route::get('search.json', function() { abort(404); });
+      Route::get('trends.json', function() { abort(404); });
+
+      // oauth stuff
+      Route::get('oauth/request_token', function() { abort(404); });
+      Route::get('oauth/access_token', function() { abort(404); });
+      Route::get('oauth/authorize', function() { abort(404); });
+  });
+  Route::group(['prefix'=>'v1'], function() {
+      Route::get('/', function() { abort(404); });
+      
+      Route::get('statuses/public_timeline.{fmt}', 'ApiStatusController@publicTimeline');
+
+      // this is not part of the Twitter API. Also may require authentication depending on server config!
+      Route::get('statuses/networkpublic_timeline.{fmt}', 'ApiStatusController@networkTimeline');
+
+      Route::get('statuses/friends_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/friends_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/home_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/home_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/user_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/user_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions.{fmt}', function() { abort(404); });
+      Route::get('statuses/replies/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/replies.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions_timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/mentions_timeline.{fmt}', function() { abort(404); });
+      Route::get('statuses/friends/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/friends.{fmt}', function() { abort(404); });
+      Route::get('statuses/followers/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/followers.{fmt}', function() { abort(404); });
+      Route::get('statuses/show/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/show.{fmt}', function() { abort(404); });
+      Route::get('statuses/update.{fmt}', function() { abort(404); });
+      Route::get('statuses/destroy/{id}.{fmt}', function() { abort(404); });
+      Route::get('statuses/destroy.{fmt}', function() { abort(404); });
+
+      // START qvitter API additions
+      Route::get('attachment/{id}.{fmt}', function() { abort(404); });
+      Route::get('attachment/checkhub.{fmt}', function() { abort(404); });
+      Route::get('externalprofile/show.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/admins/{id}.{fmt}', function() { abort(404); });
+      Route::get('account/update_link_color.{fmt}', function() { abort(404); });
+      Route::get('account/update_background_color.{fmt}', function() { abort(404); });
+      Route::get('account/register.{fmt}', function() { abort(404); });
+      Route::get('check_nickname.{fmt}', function() { abort(404); });
+      
+      // users
+      Route::get('users/show/{id}.{fmt}', 'ApiUserController@showId');
+      Route::get('users/show.{fmt}', 'ApiUserController@show');
+      Route::get('users/profile_image/{screen_name}.{fmt}', function() { abort(404); });
+      
+      // friendships
+      Route::get('friendships/show.{fmt}', function() { abort(404); });
+      Route::get('friendships/exists.{fmt}', function() { abort(404); });
+      Route::get('friendships/create/{id}.{fmt}', function() { abort(404); });
+      Route::get('friendships/create.{fmt}', function() { abort(404); });
+      Route::get('friendships/destroy/{id}.{fmt}', function() { abort(404); });
+      Route::get('friendships/destroy.{fmt}', function() { abort(404); });
+
+      // Social graph
+      Route::get('friends/ids/{id}.{fmt}', function() { abort(404); });
+      Route::get('followers/ids/{id}.{fmt}', function() { abort(404); });
+      Route::get('friends/{ids}.{fmt}', function() { abort(404); });
+      Route::get('followers/{ids}.{fmt}', function() { abort(404); });
+
+      // account
+      Route::get('account/verify_credentials.{fmt}', function() { abort(404); });
+      Route::get('account/update_profile.{fmt}', function() { abort(404); });
+      Route::get('account/update_profile_image.{fmt}', function() { abort(404); });
+      Route::get('account/update_delivery_device.{fmt}', function() { abort(404); });
+
+      // special case where verify_credentials is called w/out a format
+      Route::get('account/verify_credentials', function() { abort(404); });
+
+      Route::get('account/rate_limit_status.{fmt}', function() { abort(404); });
+      Route::get('blocks/create/{id}.{fmt}', function() { abort(404); });
+      Route::get('blocks/create.{fmt}', function() { abort(404); });
+      Route::get('blocks/destroy/{id}.{fmt}', function() { abort(404); });
+      Route::get('blocks/destroy.{fmt}', function() { abort(404); });
+      Route::get('help/test.{fmt}', function() { abort(404); });
+      Route::get('statusnet/version.{fmt}', function() { abort(404); });
+      Route::get('statusnet/config.{fmt}', function() { abort(404); });
+      Route::get('gnusocial/version.{fmt}', function() { abort(404); });
+      Route::get('gnusocial/config.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/timeline/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/show/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/show.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/join/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/join.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/leave/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/leave.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/is_member.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/list/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/list.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/list_all.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/membership/{id}.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/create.{fmt}', function() { abort(404); });
+      Route::get('statusnet/groups/update/{id}.{fmt}', function() { abort(404); });
+
+      // conversation (aka threaded status)
+      Route::get('statusnet/conversation/{id}.{fmt}', function() { abort(404); });
+
+      // Lists (people tags)
+      Route::get('lists/list.{fmt}', function() { abort(404); });
+      Route::get('lists/memberships.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/memberships.{fmt}', function() { abort(404); });
+      Route::get('lists/subscriptions.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/subscriptions.{fmt}', function() { abort(404); });
+      Route::get('lists.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/{id}.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists.{fmt}', function() { abort(404); });
+      Route::get('{user}/lists/{id}/statuses.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/members/{id}.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/members.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/subscribers/{id}.{fmt}', function() { abort(404); });
+      Route::get('{user}/{list_id}/subscribers.{fmt}', function() { abort(404); });
+
+      // Tags
+      Route::get('statusnet/tags/timeline/{tag}.{fmt}', function() { abort(404); });
+
+      // media related
+      Route::get('statusnet/media/upload', function() { abort(404); });
+      Route::get('statuses/update_with_media.json', function() { abort(404); });
+
+      // Twitter Media upload API v1.1
+      Route::get('media/upload.{fmt}', function() { abort(404); });
+
+      // search
+      Route::get('search.atom', function() { abort(404); });
+      Route::get('search.json', function() { abort(404); });
+      Route::get('trends.json', function() { abort(404); });
+
+      // oauth stuff
+      Route::get('oauth/request_token', function() { abort(404); });
+      Route::get('oauth/access_token', function() { abort(404); });
+      Route::get('oauth/authorize', function() { abort(404); });
+  });
 });
