@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['domain' => 'social-faker.dev', 'middleware' => 'web'], function () {
+
+Route::auth();
 
 Route::get('/', function () {
     return view('welcome');
@@ -286,3 +289,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/asset/{path}', 'AvatarController@show')->where('path', '.*');
+
+});
+Route::group(['domain' => 'developers.social-faker.dev', 'middleware' => 'web'], function () {
+  Route::get('/', 'DeveloperController@home');
+
+  Route::get('style-guide', 'DeveloperController@styleGuideHome');
+  Route::get('style-guide/status', 'DeveloperController@styleGuideStatus');
+});
